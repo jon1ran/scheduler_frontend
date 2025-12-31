@@ -12,7 +12,7 @@ export const useApi = () => {
             }
         }
 
-        const response = await fetch(`https://scheduler.jonirastorza.com/api/${endpoint}`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/${endpoint}`, {
             ...defaultOptions,
             ...options,
         })
