@@ -1,13 +1,10 @@
-import { useAuth } from "@clerk/clerk-react"
+import {useAuth} from "@clerk/clerk-react"
 
 export const useApi = () => {
-    const { getToken } = useAuth()
+    const {getToken} = useAuth()
 
     const makeRequest = async (endpoint, options = {}) => {
         const token = await getToken()
-        const baseUrl = import.meta.env.VITE_BACKEND_API_URL || 'https://scheduler.jonirastorza.com'
-        console.log('API baseUrl:', baseUrl) // Debug log
-        const url = `${baseUrl}/api/${endpoint}`
         const defaultOptions = {
             headers: {
                 "Content-Type": "application/json",
@@ -15,7 +12,7 @@ export const useApi = () => {
             }
         }
 
-        const response = await fetch(url, {
+        const response = await fetch(`https://scheduler.jonirastorza.com/api/${endpoint}`, {
             ...defaultOptions,
             ...options,
         })
@@ -31,5 +28,5 @@ export const useApi = () => {
         return response.json()
     }
 
-    return { makeRequest }
+    return {makeRequest}
 }
