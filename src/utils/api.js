@@ -5,7 +5,8 @@ export const useApi = () => {
 
     const makeRequest = async (endpoint, options = {}) => {
         const token = await getToken()
-        const baseUrl = import.meta.env.VITE_BACKEND_API_URL
+        const baseUrl = import.meta.env.VITE_BACKEND_API_URL || 'https://scheduler.jonirastorza.com'
+        console.log('API baseUrl:', baseUrl) // Debug log
         const url = `${baseUrl}/api/${endpoint}`
         const defaultOptions = {
             headers: {
