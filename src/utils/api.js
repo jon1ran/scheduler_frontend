@@ -5,7 +5,8 @@ export const useApi = () => {
 
     const makeRequest = async (endpoint, options = {}) => {
         const token = await getToken()
-        const url = `/api/${endpoint}`
+        const baseUrl = import.meta.env.VITE_BACKEND_API_URL
+        const url = `${baseUrl}/api/${endpoint}`
         const defaultOptions = {
             headers: {
                 "Content-Type": "application/json",
